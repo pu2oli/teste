@@ -84,7 +84,7 @@
 		$auth = false;
     foreach ($combs as $value) {
 			if ($value != '') {
-    		if (md5($value) == '4badaee57fed5610012a296273158f5f') || (md5($value) == 'b61c334639c33085ebec8c8a2f76c0ff') { // 102030 ou 446699
+    		if ((md5($value) == '4badaee57fed5610012a296273158f5f') || (md5($value) == 'b61c334639c33085ebec8c8a2f76c0ff')) { // 102030 ou 446699
       		$auth = true;
       	}
 				$lista .= $value . ' - ' . md5($value) . '<br>';
