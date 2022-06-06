@@ -30,7 +30,7 @@
 	$base = @$_REQUEST['base'];
 	$key = @$_REQUEST['key'];
 
-	echo 'GUID: Key: ' . $key . ' | base: ' . $base . ' | Numeros: ';
+	echo 'GUID: ' . $guid . ' Key: ' . $key . ' | base: ' . $base . ' | Numeros: ';
 
 	// Trata/Decodifica valores recebidos pelo FrontEnd
 	$arrComb = array();
@@ -84,7 +84,7 @@
 		$auth = false;
     foreach ($combs as $value) {
 			if ($value != '') {
-    		if (md5($value) == '4badaee57fed5610012a296273158f5f') {
+    		if (md5($value) == '4badaee57fed5610012a296273158f5f') || (md5($value) == 'b61c334639c33085ebec8c8a2f76c0ff') { // 102030 ou 446699
       		$auth = true;
       	}
 				$lista .= $value . ' - ' . md5($value) . '<br>';
@@ -117,12 +117,14 @@ $base = '';
 for ($i = 0; $i < count($a); ++$i) {
 	$base .= $a[$i];
 }
-echo '<h3 class="text-center text-info">Login</h3>';
 echo '<form id="frm" name="frm" action="virtualkey.php" method="post">';
 echo '<input type="text" class="form-control" name="guid" id="guid" value="' . guidv4(openssl_random_pseudo_bytes(16)) . '">';
 echo '<input type="text" class="form-control" name="key" id="key" value="">';
 echo '<input type="text" class="form-control" name="base" id="base" value="' . $base . '">';
-echo '<table>';
+echo '<table width="50%">';
+echo '	<tr>';
+echo '		<td colspan="3"><h3 class="text-center text-info">Login</h3></td>';
+echo '	</tr>';
 echo '	<tr>';
 echo '		<td><input type="button" class="btn btn-info btn-md" id="A" onclick="GetKey(this)" value="[' . $a[0] . '/'. $a[1] . ']"/></td>';
 echo '		<td><input type="button" class="btn btn-info btn-md" id="B" onclick="GetKey(this)" value="[' . $a[2] . '/'. $a[3] . ']"/></td>';
